@@ -1,6 +1,11 @@
 package com.bnt.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Prime implements Runnable {
+
+    public static final Logger logger = LoggerFactory.getLogger(Prime.class);
 
     int number;
 
@@ -22,9 +27,9 @@ public class Prime implements Runnable {
             }
         }
         if (isPrime) {
-            System.out.println(number + " is prime.");
+            logger.info(number + " is prime." +" (Thread: " + Thread.currentThread().getName() + ")");
         } else {
-            System.out.println(number + " is not prime.");
+            logger.info(number + " is not prime."+ " (Thread: " + Thread.currentThread().getName() + ")");
         }
     }
 }

@@ -1,8 +1,13 @@
 package com.bnt.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Armstrong implements Runnable {
 
-    private int number;
+    private static final Logger logger = LoggerFactory.getLogger(Armstrong.class);
+
+    int number;
 
     public Armstrong(int number) {
         this.number = number;
@@ -19,9 +24,9 @@ public class Armstrong implements Runnable {
             number /= 10;
         }
         if (sum == originalNumber) {
-            System.out.println(originalNumber + " is an Armstrong number.");
+            logger.info(originalNumber + " is an Armstrong number."+ " (Thread: " + Thread.currentThread().getName() + ")");
         } else {
-            System.out.println(originalNumber + " is not an Armstrong number.");
+            logger.info(originalNumber + " is not an Armstrong number."+ " (Thread: " + Thread.currentThread().getName() + ")");
         }
     }
 }

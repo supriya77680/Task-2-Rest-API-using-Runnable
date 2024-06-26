@@ -1,6 +1,11 @@
 package com.bnt.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class EvenOdd implements Runnable{
+
+    private static final Logger logger = LoggerFactory.getLogger(EvenOdd.class);
 
      int number;
 
@@ -12,9 +17,9 @@ public class EvenOdd implements Runnable{
     @Override
     public void run() {
         if (number % 2 == 0) {
-            System.out.println(number + " is even.");
+            logger.info(number + " is even."+ " (Thread: " + Thread.currentThread().getName() + ")");
         } else {
-            System.out.println(number + " is odd.");
+            logger.info(number + " is odd."+ " (Thread: " + Thread.currentThread().getName() + ")");
         }
     }
     

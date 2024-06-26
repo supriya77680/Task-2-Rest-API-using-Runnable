@@ -1,6 +1,11 @@
 package com.bnt.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Cube implements Runnable{
+
+    private static final Logger logger = LoggerFactory.getLogger(Cube.class);
 
     int number;
 
@@ -11,7 +16,7 @@ public class Cube implements Runnable{
     @Override
     public void run() {
       int result = number * number * number;
-      System.out.println("Cube of number " + number + " is: " + result);
+      logger.info("Cube of number " + number + " is: " + result +  " (Thread: " + Thread.currentThread().getName() + ")");
     }
     
     

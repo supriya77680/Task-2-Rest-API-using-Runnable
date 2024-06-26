@@ -1,6 +1,11 @@
 package com.bnt.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Palindrome implements Runnable {
+
+    private static final Logger logger = LoggerFactory.getLogger(Palindrome.class);
 
     int number;
 
@@ -18,9 +23,9 @@ public class Palindrome implements Runnable {
             number /= 10;
         }
         if (originalNumber == reversedNumber) {
-            System.out.println(originalNumber + " is a palindrome.");
+            logger.info(originalNumber + " is a palindrome."+ " (Thread: " + Thread.currentThread().getName() + ")");
         } else {
-            System.out.println(originalNumber + " is not a palindrome.");
+            logger.info(originalNumber + " is not a palindrome."+ " (Thread: " + Thread.currentThread().getName() + ")");
         }
     }
 }
