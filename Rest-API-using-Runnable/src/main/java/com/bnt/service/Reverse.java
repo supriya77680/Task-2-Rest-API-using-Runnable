@@ -15,13 +15,21 @@ public class Reverse implements Runnable {
 
     @Override
     public void run() {
-        int reversed = 0;
-        while (number != 0) {
-            int digit = number % 10;
-            reversed = reversed * 10 + digit;
-            number /= 10;
+        try {
+            int reversed = 0;
+            
+            int originalNumber = number;
+            while (number != 0) {
+                int digit = number % 10;
+                reversed = reversed * 10 + digit;
+                number /= 10;
+            }
+            logger.info("Reverse of number " + originalNumber + " is: " + reversed + " (Thread: " + Thread.currentThread().getName() + ")");
+            
+        } catch (Exception e) {
+            logger.error("Exception occurred while calculating reverse of number " + number + ": " + e.getMessage());
         }
-        logger.info("Reverse of number is: " + reversed+ " (Thread: " + Thread.currentThread().getName() + ")");
     }
+    
 }
 

@@ -15,13 +15,18 @@ public class EvenOdd implements Runnable{
     }
 
     @Override
-    public void run() {
+public void run() {
+    try {
         if (number % 2 == 0) {
-            logger.info(number + " is even."+ " (Thread: " + Thread.currentThread().getName() + ")");
+            logger.info(number + " is even. (Thread: " + Thread.currentThread().getName() + ")");
         } else {
-            logger.info(number + " is odd."+ " (Thread: " + Thread.currentThread().getName() + ")");
+            logger.info(number + " is odd. (Thread: " + Thread.currentThread().getName() + ")");
         }
+    } catch (ArithmeticException e) {
+        logger.error("ArithmeticException occurred: " + e.getMessage());
+    } catch (Exception e) {
+        logger.error("Exception occurred: " + e.getMessage());
     }
-    
-
+  }
 }
+    

@@ -15,19 +15,27 @@ public class Armstrong implements Runnable {
 
     @Override
     public void run() {
-        int originalNumber = number;
-        int sum = 0;
-        int digits = String.valueOf(number).length();
-        while (number > 0) {
-            int digit = number % 10;
-            sum += Math.pow(digit, digits);
-            number /= 10;
-        }
-        if (sum == originalNumber) {
-            logger.info(originalNumber + " is an Armstrong number."+ " (Thread: " + Thread.currentThread().getName() + ")");
-        } else {
-            logger.info(originalNumber + " is not an Armstrong number."+ " (Thread: " + Thread.currentThread().getName() + ")");
+        try {
+            int originalNumber = number;
+            int sum = 0;
+            int digits = String.valueOf(number).length();
+            
+            while (number > 0) {
+                int digit = number % 10;
+                sum += Math.pow(digit, digits);
+                number /= 10;
+            }
+            
+            if (sum == originalNumber) {
+                logger.info(originalNumber + " is an Armstrong number. (Thread: " + Thread.currentThread().getName() + ")");
+            } else {
+                logger.info(originalNumber + " is not an Armstrong number. (Thread: " + Thread.currentThread().getName() + ")");
+            }
+            
+        } catch (Exception e) {
+            logger.error("Exception occurred while checking Armstrong number for " + number + ": " + e.getMessage());
         }
     }
+    
 }
 

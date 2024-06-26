@@ -15,11 +15,17 @@ public class Factorial implements Runnable {
 
     @Override
     public void run() {
-        int factorial = 1;
-        for (int i = 1; i <= number; i++) {
-            factorial *= i;
+        try {
+            int factorial = 1;
+            for (int i = 1; i <= number; i++) {
+                factorial *= i;
+            }
+            logger.info("Factorial of " + number + " is: " + factorial + " (Thread: " + Thread.currentThread().getName() + ")");
+            
+        } catch (Exception e) {
+            logger.error("Exception occurred while calculating factorial for " + number + ": " + e.getMessage());
         }
-        logger.info("Factorial of " + number + " is: " + factorial+ " (Thread: " + Thread.currentThread().getName() + ")");
     }
+    
 }
 

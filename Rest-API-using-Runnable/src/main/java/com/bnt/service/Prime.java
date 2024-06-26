@@ -15,21 +15,29 @@ public class Prime implements Runnable {
 
     @Override
     public void run() {
-        boolean isPrime = true;
-        if (number <= 1) {
-            isPrime = false;
-        } else {
-            for (int i = 2; i <= Math.sqrt(number); i++) {
-                if (number % i == 0) {
-                    isPrime = false;
-                    break;
+        try {
+            boolean isPrime = true;
+            
+            if (number <= 1) {
+                isPrime = false;
+            } else {
+                for (int i = 2; i <= Math.sqrt(number); i++) {
+                    if (number % i == 0) {
+                        isPrime = false;
+                        break;
+                    }
                 }
             }
-        }
-        if (isPrime) {
-            logger.info(number + " is prime." +" (Thread: " + Thread.currentThread().getName() + ")");
-        } else {
-            logger.info(number + " is not prime."+ " (Thread: " + Thread.currentThread().getName() + ")");
+            
+            if (isPrime) {
+                logger.info(number + " is prime. (Thread: " + Thread.currentThread().getName() + ")");
+            } else {
+                logger.info(number + " is not prime. (Thread: " + Thread.currentThread().getName() + ")");
+            }
+            
+        } catch (Exception e) {
+            logger.error("Exception occurred during prime check for number " + number + ": " + e.getMessage());
         }
     }
 }
+    
